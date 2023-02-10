@@ -1,2 +1,3 @@
-# spiffers
-Rust implementation of SPIFFE
+# Spiffers
+
+Rust implementation of [SPIFFE](https://github.com/spiffe/spiffe).
