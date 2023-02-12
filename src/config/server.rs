@@ -1,33 +1,7 @@
-use clap::Parser;
-use clap_complete::Shell;
-
-/// Rust implementation of SPIFFE
-#[derive(Parser, Debug)]
-#[command(author, version, about, long_about = None)]
-pub struct App {
-    #[command(subcommand)]
-    pub run: Run,
-}
+use clap::*;
 
 #[derive(Debug, clap::Subcommand)]
-pub enum Run {
-    #[command(subcommand)]
-    Client(Client),
-    #[command(subcommand)]
-    Server(Server),
-    #[command(value_parser = value_parser!(Shell))]
-    Completion { shell: Shell },
-}
-
-#[derive(Debug, clap::Subcommand)]
-pub enum Client {
-    Api,
-    Healthcheck,
-    Run,
-    Validate,
-}
-
-#[derive(Debug, clap::Subcommand)]
+#[clap(about = "Commands to run or interact with an server")]
 pub enum Server {
     #[clap(about = "Manage registered agents")]
     Agent,
