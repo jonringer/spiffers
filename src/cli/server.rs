@@ -1,5 +1,3 @@
-use clap::*;
-
 #[derive(Debug, clap::Subcommand)]
 #[clap(about = "Commands to run or interact with an server")]
 pub enum Server {

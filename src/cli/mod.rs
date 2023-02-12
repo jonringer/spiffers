@@ -2,20 +2,20 @@ use clap::Parser;
 mod agent;
 mod server;
 
-use agent::Agent;
-use server::Server;
+pub use agent::Agent;
+pub use server::Server;
 
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
 pub struct App {
     #[command(subcommand)]
-    run: Run,
+    pub commands: Commands,
     #[arg(short, long, global = true)]
     verbose: bool,
 }
 
 #[derive(Debug, clap::Subcommand)]
-enum Run {
+pub enum Commands {
     #[command(subcommand)]
     Agent(Agent),
     #[command(subcommand)]
