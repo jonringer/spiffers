@@ -6,12 +6,12 @@ use clap::Parser;
 pub struct App {
 
     #[command(subcommand)]
-    run: Run
+    pub run: Run
 }
 
 #[derive(Debug)]
 #[derive(clap::Subcommand)]
-enum Run {
+pub enum Run {
   #[command(subcommand)]
   Client(Client),
   #[command(subcommand)]
@@ -20,7 +20,7 @@ enum Run {
 
 #[derive(Debug)]
 #[derive(clap::Subcommand)]
-enum Client {
+pub enum Client {
     Api,
     Healthcheck,
     Run,
@@ -29,7 +29,7 @@ enum Client {
 
 #[derive(Debug)]
 #[derive(clap::Subcommand)]
-enum Server {
+pub enum Server {
   #[clap(about = "Manage registered agents")]
   Agent,
   #[clap(about = "Manage CA bundle data")]
@@ -49,7 +49,7 @@ enum Server {
 #[derive(Debug)]
 #[derive(clap::Subcommand)]
 #[clap(about = "Generate a JWT-SVID, join token, or x509-SVID")]
-enum ServerGenerate {
+pub enum ServerGenerate {
   #[clap(about = "Generate a JWT-SVID")]
   Jwt,
   #[clap(about = "Generate a join token")]
