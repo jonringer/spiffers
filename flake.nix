@@ -26,6 +26,7 @@
       packages = utils.lib.flattenTree {
         inherit (legacyPackages) devShells spiffers;
       };
+      inherit (legacyPackages) devShells;
       defaultPackage = packages.spiffers;
       apps.spiffers = utils.lib.mkApp { drv = packages.spiffers; };  # use as `nix run .#spiffers`
       hydraJobs = { inherit (legacyPackages) spiffers; };

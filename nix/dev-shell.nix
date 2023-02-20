@@ -2,8 +2,10 @@
 , stdenv
 , cargo
 , mkShell
-}
+, protobuf
+}:
 
 mkShell {
-  nativeBuildInputs = [ cargo ];
+  nativeBuildInputs = [ cargo protobuf ];
+  buildInputs = [ protobuf ];
 }
