@@ -1,4 +1,5 @@
 use clap::Parser;
+use clap_complete::Shell;
 
 /// Simple program to greet a person
 #[derive(Parser, Debug)]
@@ -14,6 +15,8 @@ pub enum Run {
     Client(Client),
     #[command(subcommand)]
     Server(Server),
+    #[command(value_parser = value_parser!(Shell))]
+    Completion { shell: Shell },
 }
 
 #[derive(Debug, clap::Subcommand)]

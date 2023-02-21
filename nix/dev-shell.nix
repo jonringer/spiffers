@@ -1,12 +1,21 @@
 { lib
 , stdenv
 , cargo
+, clippy
 , mkShell
 , protobuf
 , rustfmt
+, spire
 }:
 
 mkShell {
-  nativeBuildInputs = [ cargo protobuf rustfmt ];
-  buildInputs = [ protobuf ];
+  nativeBuildInputs = [
+    cargo
+    clippy
+    protobuf
+    rustfmt
+
+    # For testing
+    spire
+  ];
 }

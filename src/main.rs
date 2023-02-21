@@ -1,8 +1,9 @@
 mod client;
+mod completion;
 mod config;
 mod server;
 
-use clap::Parser;
+use clap::{CommandFactory, Parser};
 use client::handle_client;
 use config::{App, Run};
 use server::handle_server;
@@ -15,5 +16,9 @@ async fn main() -> Result<(), Error> {
     match args.run {
         Run::Server(cmd) => handle_server(cmd),
         Run::Client(cmd) => handle_client(cmd),
+        Run::Completion { shell } => {
+            completion::print_completions(shell, &mut App::command());
+            Ok(())
+        }
     }
 }
