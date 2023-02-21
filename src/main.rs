@@ -2,9 +2,9 @@ mod client;
 mod config;
 mod server;
 
-use config::{App, Run};
 use clap::Parser;
 use client::handle_client;
+use config::{App, Run};
 use server::handle_server;
 use std::io::Error;
 

@@ -3,9 +3,10 @@
 , cargo
 , mkShell
 , protobuf
+, rustfmt
 }:
 
 mkShell {
-  nativeBuildInputs = [ cargo protobuf ];
+  nativeBuildInputs = [ cargo protobuf rustfmt ];
   buildInputs = [ protobuf ];
 }
