@@ -2,8 +2,10 @@
 , stdenv
 , cargo
 , clippy
+, darwin
 , mkShell
 , pkg-config
+, libiconv
 , openssl
 , protobuf
 , rustc
@@ -26,5 +28,8 @@ mkShell {
 
   buildInputs = [
     openssl
+  ] ++ lib.optionals stdenv.isDarwin [
+    libiconv
+    darwin.apple_sdk.frameworks.Security
   ];
 }
