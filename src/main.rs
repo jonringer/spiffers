@@ -1,6 +1,7 @@
 mod client;
 mod completion;
 mod config;
+mod datastore;
 mod server;
 
 use clap::{CommandFactory, Parser};
