@@ -1,12 +1,12 @@
 mod client;
 mod completion;
-mod config;
+mod cli;
 mod datastore;
 mod server;
 
 use clap::{CommandFactory, Parser};
 use client::handle_client;
-use config::{App, Run};
+use cli::{App, Commands};
 use server::handle_server;
 use std::io::Error;
 
@@ -14,10 +14,10 @@ use std::io::Error;
 async fn main() -> Result<(), Error> {
     let args = App::parse();
 
-    match args.run {
-        Run::Server(cmd) => handle_server(cmd),
-        Run::Client(cmd) => handle_client(cmd),
-        Run::Completion { shell } => {
+    match args.commands {
+        Commands::Server(cmd) => handle_server(cmd),
+        Commands::Agent(cmd) => handle_client(cmd),
+        Commands::Completion { shell } => {
             completion::print_completions(shell, &mut App::command());
             Ok(())
         }
